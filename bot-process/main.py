@@ -27,6 +27,7 @@ def get_request_type_payload_and_handler_from_text(text: str):
         else:
             handler = handle_invalid_request
         return request_type, payload, handler
+
     return RequestType.INVALID, None, handle_invalid_request
 
 def send_to_llm(payload: str):
