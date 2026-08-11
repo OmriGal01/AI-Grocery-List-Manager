@@ -1,13 +1,28 @@
+import os
+from contextlib import asynccontextmanager
+import asyncpg
 from fastapi import FastAPI, Request
 from RequestTypes import RequestType
+from db import add_items, remove_items, get_items, get_or_create_list_id, QueryHandler
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]
+    app.state.db_pool = await asyncpg.create_pool(database=os.environ["DB_NAME"],
+                                                  user=os.environ["DB_USER"],
+                                                  password=os.environ["DB_PASSWORD"],
+                                                  host=f"/cloudsql/{instance_connection_name}",
+                                                  min_size=2, max_size=10)
+    yield
+    await app.state.db_pool.close()
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def read_root():
     return {"status": "I'm alive!"}
 
-def get_request_type_payload_and_handler_from_text(text: str):
+def get_request_type_payload_and_handler_dispatch(text: str) -> tuple[RequestType, list[str] | str | None, QueryHandler]:
     text = text.strip().lower()
     if not text:
         return RequestType.INVALID, None, handle_invalid_request
@@ -18,44 +33,37 @@ def get_request_type_payload_and_handler_from_text(text: str):
     if split_text[0] in RequestType:
         request_type = RequestType(split_text[0])
         payload = split_text[1:] if request_type != RequestType.GET_LIST else None
-        if request_type == RequestType.ADD:
-            handler = add_to_list
-        elif request_type == RequestType.REMOVE:
-            handler = remove_from_list
-        elif request_type == RequestType.GET_LIST:
-            handler = get_list
-        else:
-            handler = handle_invalid_request
+        handler = handle_invalid_request
+        match request_type:
+            case RequestType.ADD:
+                handler = add_items
+            case RequestType.REMOVE:
+                handler = remove_items
+            case RequestType.GET_LIST:
+                handler = get_items
         return request_type, payload, handler
 
     return RequestType.INVALID, None, handle_invalid_request
 
-def send_to_llm(payload: str):
+async def send_to_llm(pool: asyncpg.pool.Pool, list_id: int, payload) -> object:
     # TODO: Implement
     pass
 
-def add_to_list(payload: list[str]):
-    # TODO: Implement when DB is setup
-    pass
-
-def remove_from_list(payload: list[str]):
-    # TODO: Implement when DB is setup
-    pass
-
-def get_list(payload) -> list[str]:
-    # TODO: Implement when DB is setup
-    pass
-
-def handle_invalid_request(payload):
+async def handle_invalid_request(pool: asyncpg.pool.Pool, list_id: int, payload) -> object:
     # TODO: Choose what to do here
-    pass
+    return False
 
 @app.post("/webhook")
 async def webhook(request: Request):
     req_json = await request.json()
     message_text = req_json["message"]["text"]
+    chat_id = req_json["message"]["chat"]["id"]
 
-    request_type, payload, handler = get_request_type_payload_and_handler_from_text(message_text)
-    handler(payload)
+    pool = app.state.db_pool
+    request_type, payload, handler = get_request_type_payload_and_handler_dispatch(message_text)
+    list_id = await get_or_create_list_id(pool, chat_id)
+    await handler(app.state.db_pool, list_id, payload)
+
+    # TODO: send response to user if query was successful or not
 
     return {"ok": True}
