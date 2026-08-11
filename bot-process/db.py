@@ -2,7 +2,7 @@ from typing import Protocol
 import asyncpg
 
 class QueryHandler(Protocol):
-    async def __call__(self, pool: asyncpg.pool.Pool, list_id: int, payload) -> object:
+    async def __call__(self, pool: asyncpg.pool.Pool, list_id: int, payload):
         ...
 
 async def get_or_create_list_id(pool: asyncpg.pool.Pool, chat_id: int) -> int:

@@ -4,6 +4,7 @@ import asyncpg
 from fastapi import FastAPI, Request
 from RequestTypes import RequestType
 from db import add_items, remove_items, get_items, get_or_create_list_id, QueryHandler
+from telegram import build_reply_text, send_telegram_message
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -45,13 +46,13 @@ def get_request_type_payload_and_handler_dispatch(text: str) -> tuple[RequestTyp
 
     return RequestType.INVALID, None, handle_invalid_request
 
-async def send_to_llm(pool: asyncpg.pool.Pool, list_id: int, payload) -> object:
+async def send_to_llm(pool: asyncpg.pool.Pool, list_id: int, payload) -> None:
     # TODO: Implement
     pass
 
-async def handle_invalid_request(pool: asyncpg.pool.Pool, list_id: int, payload) -> object:
+async def handle_invalid_request(pool: asyncpg.pool.Pool, list_id: int, payload) -> None:
     # TODO: Choose what to do here
-    return False
+    pass
 
 @app.post("/webhook")
 async def webhook(request: Request):
@@ -62,8 +63,8 @@ async def webhook(request: Request):
     pool = app.state.db_pool
     request_type, payload, handler = get_request_type_payload_and_handler_dispatch(message_text)
     list_id = await get_or_create_list_id(pool, chat_id)
-    await handler(app.state.db_pool, list_id, payload)
-
-    # TODO: send response to user if query was successful or not
+    operation_result = await handler(app.state.db_pool, list_id, payload)
+    reply_text = build_reply_text(request_type, operation_result)
+    await send_telegram_message(chat_id, reply_text)
 
     return {"ok": True}
