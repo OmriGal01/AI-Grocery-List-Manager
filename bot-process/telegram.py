@@ -21,6 +21,8 @@ async def send_telegram_message(chat_id: int, text: str):
 
 def build_reply_text(request_type: RequestType, query_result: object) -> str:
     match request_type:
+        case RequestType.SEND_TO_LLM:
+            return cast(str, query_result)
         case RequestType.ADD:
             return _build_add_reply(cast(dict[str, bool], query_result))
         case RequestType.REMOVE:
