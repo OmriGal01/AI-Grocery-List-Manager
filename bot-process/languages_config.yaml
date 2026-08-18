@@ -1,0 +1,17 @@
+en:
+  words:
+    add: ADD
+    remove: REMOVE
+    list: GET_LIST
+    help: HELP
+    "?": HELP
+  prefixes:
+    "!": SEND_TO_LLM
+    "$": SEND_TO_LLM
+    "#": SEND_TO_LLM
+  descriptions:
+    ADD: "<item(s)> — Add item(s) to your list, separated by new lines"
+    REMOVE: "<item(s)> — Remove item(s) from your list, separated by new lines"
+    GET_LIST: "— Show your current list"
+    HELP: "— Show this message"
+    SEND_TO_LLM: "<request> — Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"

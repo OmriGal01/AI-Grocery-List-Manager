@@ -1,6 +1,9 @@
+mcp-types
+typing-extensions
 fastapi
 uvicorn
 asyncpg
 httpx
 mcp
 google-genai
+PyYAML

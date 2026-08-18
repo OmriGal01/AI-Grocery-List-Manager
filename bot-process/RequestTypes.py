@@ -1,8 +1,9 @@
-from enum import Enum
+from enum import Enum, auto
 
 class RequestType(Enum):
-    INVALID = "invalid"
-    SEND_TO_LLM = "!"
-    ADD = "add"
-    REMOVE = "remove"
-    GET_LIST = "list"
+    INVALID = auto()
+    HELP = auto()
+    ADD = auto()
+    REMOVE = auto()
+    GET_LIST = auto()
+    SEND_TO_LLM = auto()
