@@ -7,13 +7,7 @@ from db import get_or_create_list_id
 from telegram import send_telegram_message
 from language_yaml_parser import WORD_TO_REQUEST_TYPE, PREFIX_TO_REQUEST_TYPE
 from ParsedMessage import ParsedMessage
-from Command import Command
-from CommandInvalid import CommandInvalid
-from CommandHelp import CommandHelp
-from CommandAdd import CommandAdd
-from CommandRemove import CommandRemove
-from CommandList import CommandList
-from CommandSendToLLM import CommandSendToLLM
+from commands import Command, CommandInvalid, CommandHelp, CommandAdd, CommandRemove, CommandList, CommandSendToLLM
 
 COMMAND_REGISTRY = {
     RequestType.INVALID: CommandInvalid,
