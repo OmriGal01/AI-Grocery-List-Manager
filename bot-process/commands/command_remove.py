@@ -1,9 +1,13 @@
 from typing import override, cast
-from Command import Command
+
+from request_types import RequestType
+from .command import Command
 import db
 import asyncpg
 
 class CommandRemove(Command):
+    REQUEST_TYPE = RequestType.REMOVE
+
     EMOJI = "🗑️"
 
     @override

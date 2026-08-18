@@ -2,6 +2,7 @@ en:
   words:
     add: ADD
     remove: REMOVE
+    clear: CLEAR
     list: GET_LIST
     help: HELP
     "?": HELP
@@ -12,6 +13,7 @@ en:
   descriptions:
     ADD: "<item(s)> — Add item(s) to your list, separated by new lines"
     REMOVE: "<item(s)> — Remove item(s) from your list, separated by new lines"
+    CLEAR: "Clears your list"
     GET_LIST: "— Show your current list"
     HELP: "— Show this message"
     SEND_TO_LLM: "<request> — Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"

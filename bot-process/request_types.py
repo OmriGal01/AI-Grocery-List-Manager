@@ -5,5 +5,6 @@ class RequestType(Enum):
     HELP = auto()
     ADD = auto()
     REMOVE = auto()
+    CLEAR = auto()
     GET_LIST = auto()
     SEND_TO_LLM = auto()

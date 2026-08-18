@@ -1,10 +1,12 @@
 from typing import override
-from Command import Command
-from RequestTypes import RequestType
+from .command import Command
+from request_types import RequestType
 from language_yaml_parser import REQUEST_TYPE_TO_DESCRIPTION, REQUEST_TYPE_TO_WORDS, REQUEST_TYPE_TO_PREFIXES
 import asyncpg
 
 class CommandHelp(Command):
+    REQUEST_TYPE = RequestType.HELP
+
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
         return None

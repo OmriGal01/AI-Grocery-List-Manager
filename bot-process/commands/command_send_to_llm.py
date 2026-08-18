@@ -1,5 +1,7 @@
 from typing import override
-from Command import Command
+
+from request_types import RequestType
+from .command import Command
 import db
 import asyncpg
 import os
@@ -18,6 +20,8 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 class CommandSendToLLM(Command):
     SYSTEM_PROMPT_PATH = Path(__file__).resolve().parent / "system_prompt.txt"
     SYSTEM_PROMPT = SYSTEM_PROMPT_PATH.read_text()
+
+    REQUEST_TYPE = RequestType.SEND_TO_LLM
 
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:

@@ -1,4 +1,4 @@
-from RequestTypes import RequestType
+from request_types import RequestType
 
 class ParsedMessage:
     def __init__(self, message: str, word_to_request_type: dict[str, RequestType], prefix_to_request_type: dict[str, RequestType]):

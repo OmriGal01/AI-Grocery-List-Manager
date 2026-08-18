@@ -18,6 +18,12 @@ async def remove_items(pool: asyncpg.pool.Pool, list_id: int, item_names: list[s
     query = "DELETE FROM items WHERE list_id = $1 AND item_name = $2"
     return await _run_per_item_query(pool, list_id, item_names, query)
 
+async def clear_list(pool: asyncpg.pool.Pool, list_id: int) -> int:
+    query = "DELETE FROM items WHERE list_id = $1 RETURNING item_name"
+    async with pool.acquire() as connection:
+        deletion_records = await connection.fetch(query, list_id)
+    return len(deletion_records)
+
 async def get_items(pool: asyncpg.pool.Pool, list_id: int) -> list[str]:
     async with pool.acquire() as connection:
         result_records = await connection.fetch("SELECT item_name FROM items WHERE list_id = $1", list_id)

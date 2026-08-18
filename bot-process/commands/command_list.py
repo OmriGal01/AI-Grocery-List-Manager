@@ -1,9 +1,13 @@
 from typing import override
-from Command import Command
+
+from request_types import RequestType
+from .command import Command
 import db
 import asyncpg
 
 class CommandList(Command):
+    REQUEST_TYPE = RequestType.GET_LIST
+
     LIST_EMOJI = "🛒"
     EMPTY_EMOJI = "🤔"
 

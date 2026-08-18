@@ -1,10 +1,14 @@
 import asyncpg
 from typing import override, cast
-from Command import Command
+
+from request_types import RequestType
+from .command import Command
 import db
 
 class CommandAdd(Command):
     EMOJI = "➕"
+
+    REQUEST_TYPE = RequestType.ADD
 
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:

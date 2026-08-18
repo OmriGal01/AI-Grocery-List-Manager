@@ -1,6 +1,6 @@
 from pathlib import Path
 import yaml
-from RequestTypes import RequestType
+from request_types import RequestType
 
 class LanguageParser:
     def __init__(self, language_config_path: Path):

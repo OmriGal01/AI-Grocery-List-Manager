@@ -1,13 +1,22 @@
 import asyncpg
 from abc import ABC, abstractmethod
-from ParsedMessage import ParsedMessage
+from parsed_message import ParsedMessage
+from request_types import RequestType
+
 
 class Command(ABC):
     WARN_EMOJI = "❗"
     SOMETHING_WENT_WRONG = "❓ Something went wrong"
 
+    REQUEST_TYPE = None
+
     def __init__(self, parsed_message: ParsedMessage):
         self.parsed_message = parsed_message
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        if cls.REQUEST_TYPE is None:
+            raise TypeError(f"{cls.__name__} must define a valid request type.")
 
     @abstractmethod
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
