@@ -1,6 +1,5 @@
 from typing import override
 from Command import Command
-from ParsedMessage import ParsedMessage
 import db
 import asyncpg
 import os
@@ -61,8 +60,8 @@ class CommandSendToLLM(Command):
             return Command.SOMETHING_WENT_WRONG
         return result
 
-    def extract_payload(self, parsed_message: ParsedMessage):
-        return parsed_message.get_prefixless_message()
+    def extract_payload(self):
+        return self.parsed_message.get_prefixless_message()
 
     @staticmethod
     async def _build_contents(pool: asyncpg.pool.Pool, chat_id: int, payload) -> list[types.Content]:

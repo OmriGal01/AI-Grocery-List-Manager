@@ -9,7 +9,7 @@ class CommandList(Command):
 
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
-        return await db.get_items(pool, list_id, chat_id, payload)
+        return await db.get_items(pool, list_id)
 
     @override
     def format_reply(self, result: object) -> str:

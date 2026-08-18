@@ -6,6 +6,9 @@ class Command(ABC):
     WARN_EMOJI = "❗"
     SOMETHING_WENT_WRONG = "❓ Something went wrong"
 
+    def __init__(self, parsed_message: ParsedMessage):
+        self.parsed_message = parsed_message
+
     @abstractmethod
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
         pass
@@ -14,7 +17,7 @@ class Command(ABC):
     def format_reply(self, result: object) -> str:
         pass
 
-    def extract_payload(self, parsed_message: ParsedMessage):
+    def extract_payload(self):
         return None
 
     @staticmethod

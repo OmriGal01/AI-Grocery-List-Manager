@@ -1,6 +1,5 @@
 from typing import override, cast
 from Command import Command
-from ParsedMessage import ParsedMessage
 import db
 import asyncpg
 
@@ -9,7 +8,7 @@ class CommandRemove(Command):
 
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
-        return await db.remove_items(pool, list_id, chat_id, payload)
+        return await db.remove_items(pool, list_id, payload)
 
     @override
     def format_reply(self, result: object) -> str:
@@ -24,5 +23,5 @@ class CommandRemove(Command):
         return '\n'.join(lines)
 
     @override
-    def extract_payload(self, parsed_message: ParsedMessage):
-        return parsed_message.get_item_list()
+    def extract_payload(self):
+        return self.parsed_message.get_item_list()

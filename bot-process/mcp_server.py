@@ -6,15 +6,15 @@ def build_mcp_server(pool, list_id, chat_id, contents) -> MCPServer:
 
     @server.tool()
     async def add_items_to_list(item_names: list[str]) -> dict[str, bool]:
-        return await add_items(pool, list_id, chat_id, item_names)
+        return await add_items(pool, list_id, item_names)
 
     @server.tool()
     async def remove_items_from_list(item_names: list[str]) -> dict[str, bool]:
-        return await remove_items(pool, list_id, chat_id, item_names)
+        return await remove_items(pool, list_id, item_names)
 
     @server.tool()
     async def get_list() -> list[str]:
-        return await get_items(pool, list_id, chat_id, None)
+        return await get_items(pool, list_id)
 
     @server.tool()
     async def query_user(question: str) -> dict[str, bool]:
