@@ -1,11 +1,13 @@
-import db
-from request_types import RequestType
-from .command import Command
 from typing import override
+from request_types import RequestType
 import asyncpg
+import db
+from .command import Command
 
 class CommandClear(Command):
     REQUEST_TYPE = RequestType.CLEAR
+
+    EMOJI = "🗑️"
 
     @override
     async def handle(self, pool: asyncpg.Pool, list_id: int, chat_id: int, payload) -> object:
@@ -17,5 +19,5 @@ class CommandClear(Command):
         if not isinstance(result, int):
             return Command.SOMETHING_WENT_WRONG
         if result == 0:
-            return "List was already empty"
-        return f"Deleted {result} items"
+            return f"{Command.WARN_EMOJI} List was already empty"
+        return f"{CommandClear.EMOJI} Deleted {result} items"

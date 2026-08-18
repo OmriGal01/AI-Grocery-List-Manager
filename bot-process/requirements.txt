@@ -1,5 +1,4 @@
 mcp-types
-typing-extensions
 fastapi
 uvicorn
 asyncpg

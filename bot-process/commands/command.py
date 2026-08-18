@@ -15,7 +15,7 @@ class Command(ABC):
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        if cls.REQUEST_TYPE is None:
+        if not isinstance(cls.REQUEST_TYPE, RequestType):
             raise TypeError(f"{cls.__name__} must define a valid request type.")
 
     @abstractmethod

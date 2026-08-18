@@ -5,13 +5,11 @@ from fastapi import FastAPI, Request, HTTPException
 
 import telegram
 from db import get_or_create_list_id
-from message_sources import MessageSource, TelegramSource
+from message_sources import MessageSource, telegram_source
 from request_types import RequestType
 from language_yaml_parser import WORD_TO_REQUEST_TYPE, PREFIX_TO_REQUEST_TYPE
 from parsed_message import ParsedMessage
-from commands import COMMAND_REGISTRY, Command, CommandInvalid, CommandHelp, CommandAdd, CommandRemove, CommandClear, CommandList, CommandSendToLLM
-
-telegram_source = TelegramSource()
+from commands import COMMAND_REGISTRY, Command
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -36,15 +34,16 @@ def get_command(text: str) -> Command:
     )
 
     if not parsed_message.first_line_words:
-        return CommandInvalid(parsed_message)
+        invalid_command_type = COMMAND_REGISTRY[RequestType.INVALID]
+        return invalid_command_type(parsed_message)
 
     for prefix, request_type in PREFIX_TO_REQUEST_TYPE.items():
         if text.startswith(prefix):
-            command_type = COMMAND_REGISTRY.get(request_type, CommandInvalid)
+            command_type = COMMAND_REGISTRY.get(request_type, COMMAND_REGISTRY[RequestType.INVALID])
             break
     else:
         request_type = WORD_TO_REQUEST_TYPE.get(parsed_message.command_candidate, RequestType.ADD)
-        command_type = COMMAND_REGISTRY.get(request_type, CommandAdd) # Default to ADD when no keyword is sent
+        command_type = COMMAND_REGISTRY.get(request_type, COMMAND_REGISTRY[RequestType.ADD]) # Default to ADD when no keyword is sent
 
     return command_type(parsed_message)
 

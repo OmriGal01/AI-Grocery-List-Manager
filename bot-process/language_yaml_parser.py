@@ -4,7 +4,7 @@ from request_types import RequestType
 
 class LanguageParser:
     def __init__(self, language_config_path: Path):
-        self.language_config = yaml.safe_load(language_config_path.read_text())
+        self.language_config = yaml.safe_load(language_config_path.read_text(encoding="utf-8"))
 
     def get_flattened_commands_dicts(self) -> tuple[dict[str, RequestType], dict[str, RequestType]]:
         word_to_request_type, prefix_to_request_type = {}, {}
