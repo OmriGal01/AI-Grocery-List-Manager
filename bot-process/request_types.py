@@ -1,6 +1,7 @@
 from enum import Enum, auto
 
 class RequestType(Enum):
+    START = auto()
     INVALID = auto()
     HELP = auto()
     ADD = auto()

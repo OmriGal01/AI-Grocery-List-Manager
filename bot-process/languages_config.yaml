@@ -1,4 +1,4 @@
-en:
+English:
   words:
     add: ADD
     remove: REMOVE
@@ -6,6 +6,8 @@ en:
     list: GET_LIST
     help: HELP
     "?": HELP
+    "/start": START
+    "start": START
 
   prefixes:
     "!": SEND_TO_LLM
@@ -20,7 +22,7 @@ en:
     HELP: "- Show this message"
     SEND_TO_LLM: "<request> - Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"
 
-heb:
+Hebrew:
   words:
     הוסף: ADD
     הסר: REMOVE
@@ -29,6 +31,7 @@ heb:
     נקה: CLEAR
     רשימה: GET_LIST
     עזרה: HELP
+    התחל: START
 
   prefixes:
     "!": SEND_TO_LLM
