@@ -7,7 +7,7 @@ import telegram
 from db import get_or_create_list_id
 from message_sources import MessageSource, telegram_source
 from request_types import RequestType
-from language_yaml_parser import WORD_TO_REQUEST_TYPE, PREFIX_TO_REQUEST_TYPE
+from language_yaml_parser import LANG_WORD_TO_REQUEST_TYPE, LANG_PREFIX_TO_REQUEST_TYPE, FLAT_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE, WORD_TO_LANGUAGE
 from parsed_message import ParsedMessage
 from commands import COMMAND_REGISTRY, Command
 
@@ -29,21 +29,12 @@ app = FastAPI(lifespan=lifespan)
 def get_command(text: str) -> Command:
     parsed_message = ParsedMessage(
         text,
-        word_to_request_type=WORD_TO_REQUEST_TYPE,
-        prefix_to_request_type=PREFIX_TO_REQUEST_TYPE
+        word_to_request_type_map=FLAT_WORD_TO_REQUEST_TYPE,
+        prefix_to_request_type_map=FLAT_PREFIX_TO_REQUEST_TYPE,
+        word_to_langauge_map=WORD_TO_LANGUAGE
     )
 
-    if not parsed_message.first_line_words:
-        invalid_command_type = COMMAND_REGISTRY[RequestType.INVALID]
-        return invalid_command_type(parsed_message)
-
-    for prefix, request_type in PREFIX_TO_REQUEST_TYPE.items():
-        if text.startswith(prefix):
-            command_type = COMMAND_REGISTRY.get(request_type, COMMAND_REGISTRY[RequestType.INVALID])
-            break
-    else:
-        request_type = WORD_TO_REQUEST_TYPE.get(parsed_message.command_candidate, RequestType.ADD)
-        command_type = COMMAND_REGISTRY.get(request_type, COMMAND_REGISTRY[RequestType.ADD]) # Default to ADD when no keyword is sent
+    command_type = COMMAND_REGISTRY.get(parsed_message.request_type, COMMAND_REGISTRY[RequestType.INVALID])
 
     return command_type(parsed_message)
 

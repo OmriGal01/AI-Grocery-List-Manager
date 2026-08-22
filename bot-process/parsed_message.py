@@ -1,14 +1,22 @@
 from request_types import RequestType
 
 class ParsedMessage:
-    def __init__(self, message: str, word_to_request_type: dict[str, RequestType], prefix_to_request_type: dict[str, RequestType]):
+    def __init__(
+            self,
+            message: str,
+            word_to_request_type_map: dict[str, RequestType],
+            prefix_to_request_type_map: dict[str, RequestType],
+            word_to_langauge_map: dict[str, str]
+            ):
         self.text = message.lower().strip()
         self.lines = self.text.split("\n")
         self.first_line_words = self.lines[0].split()
         self.command_candidate = self.first_line_words[0] if self.first_line_words else None
-        self._has_valid_command_or_prefix = (self.command_candidate in word_to_request_type.keys()
-                                             or any(self.text.startswith(prefix) for prefix in prefix_to_request_type.keys()))
+        self._has_valid_command_or_prefix = (self.command_candidate in word_to_request_type_map.keys()
+                                             or any(self.text.startswith(prefix) for prefix in prefix_to_request_type_map.keys()))
         self.first_line_item = " ".join(self.first_line_words[1:])
+        self.request_type = self._parse_request_type(word_to_request_type_map, prefix_to_request_type_map)
+        self.language = word_to_langauge_map.get(self.command_candidate, "unknown")
 
     def get_item_list(self) -> list[str]:
         if self._has_valid_command_or_prefix:
@@ -20,3 +28,13 @@ class ParsedMessage:
         if not self.text:
             return ""
         return self.text[1:].strip()
+
+    def _parse_request_type(self, word_to_request_type: dict[str, RequestType], prefix_to_request_type: dict[str, RequestType]) -> RequestType:
+        if not self.first_line_words:
+            return RequestType.INVALID
+
+        for prefix, request_type in prefix_to_request_type.items():
+            if self.text.startswith(prefix):
+                return request_type
+
+        return word_to_request_type.get(self.command_candidate, RequestType.ADD)

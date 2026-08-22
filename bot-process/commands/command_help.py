@@ -14,13 +14,19 @@ class CommandHelp(Command):
     @override
     def format_reply(self, result: object) -> str:
         help_blocks = []
-        for request_type in RequestType:
-            description = REQUEST_TYPE_TO_DESCRIPTION.get(request_type)
-            if not description:
-                continue
-            commands_and_prefixes = "/".join((REQUEST_TYPE_TO_WORDS.get(request_type, [])
-                                              + REQUEST_TYPE_TO_PREFIXES.get(request_type, [])))
-            block = f"{commands_and_prefixes} {description}"
-            help_blocks.append(block)
-        help_str = "\n\n".join(help_blocks)
-        return help_str if help_str else "Nothing here yet!"
+        language = self.parsed_message.language
+        lang_specific_request_type_to_description = REQUEST_TYPE_TO_DESCRIPTION.get(language, None)
+        lang_specific_request_type_to_words = REQUEST_TYPE_TO_WORDS.get(language, None)
+        lang_specific_request_type_to_prefixes = REQUEST_TYPE_TO_PREFIXES.get(language, None)
+        if lang_specific_request_type_to_description:
+            for request_type in RequestType:
+                description = lang_specific_request_type_to_description.get(request_type)
+                if not description:
+                    continue
+                commands_and_prefixes = "/".join((lang_specific_request_type_to_words.get(request_type, [])
+                                                  + lang_specific_request_type_to_prefixes.get(request_type, [])))
+                block = f"{commands_and_prefixes} {description}"
+                help_blocks.append(block)
+            help_str = "\n\n".join(help_blocks)
+            return help_str
+        return "Nothing here yet!"

@@ -6,14 +6,39 @@ en:
     list: GET_LIST
     help: HELP
     "?": HELP
+
   prefixes:
     "!": SEND_TO_LLM
     "$": SEND_TO_LLM
     "#": SEND_TO_LLM
+
   descriptions:
-    ADD: "<item(s)> — Add item(s) to your list, separated by new lines"
-    REMOVE: "<item(s)> — Remove item(s) from your list, separated by new lines"
-    CLEAR: "Clears your list"
-    GET_LIST: "— Show your current list"
-    HELP: "— Show this message"
-    SEND_TO_LLM: "<request> — Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"
+    ADD: "<item(s)> - Add item(s) to your list, separated by new lines"
+    REMOVE: "<item(s)> - Remove item(s) from your list, separated by new lines"
+    CLEAR: "- Clears your list"
+    GET_LIST: "- Show your current list"
+    HELP: "- Show this message"
+    SEND_TO_LLM: "<request> - Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"
+
+heb:
+  words:
+    הוסף: ADD
+    הסר: REMOVE
+    מחק: REMOVE
+    רוקן: CLEAR
+    נקה: CLEAR
+    רשימה: GET_LIST
+    עזרה: HELP
+
+  prefixes:
+    "!": SEND_TO_LLM
+    "$": SEND_TO_LLM
+    "#": SEND_TO_LLM
+
+  descriptions:
+    ADD: "<פריט(ים)> - הוסף פריט(ים) לרשימה, מופרדים בשורה חדשה"
+    REMOVE: "<פריט(ים)> - הסר פריט(ים) מהרשימה, מופרדים בשורה חדשה"
+    CLEAR: "- רוקן את הרשימה"
+    GET_LIST: "- הצג את הרשימה הנוכחית"
+    HELP: "- הצג הודעה זו"
+    SEND_TO_LLM: "<בקשה> - בקש ממני כל דבר הקשור לרשימה בשפה פשוטה. למשל: 'תוסיף מרכיבים להמבורגר'"
