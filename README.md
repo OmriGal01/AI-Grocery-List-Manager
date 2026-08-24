@@ -104,3 +104,5 @@ Current coverage: command dispatch/registry integrity, language-aware message cl
 - Additional languages (adding one is just a YAML edit, no code changes)
 - A web frontend, enabled by the existing `MessageSource` abstraction
 - Automated integration tests against a real Postgres instance
+- Categorizing items in the list (e.g. produce, dairy, household)
+- Localizing the remaining commands' replies (currently only `/help` and `/start` are language-aware)

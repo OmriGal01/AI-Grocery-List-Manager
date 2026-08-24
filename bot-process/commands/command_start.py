@@ -1,8 +1,8 @@
 from typing import override
 from .command import Command
 import asyncpg
-from language_yaml_parser import REQUEST_TYPE_TO_WORDS
-from request_types import RequestType
+from language.language_yaml_parser import REQUEST_TYPE_TO_WORDS
+from models.request_types import RequestType
 
 class CommandStart(Command):
     EMOJI = "👋"

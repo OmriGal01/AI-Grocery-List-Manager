@@ -2,7 +2,7 @@ import pytest
 from typing import override
 import asyncpg
 from commands import Command, COMMAND_REGISTRY
-from request_types import RequestType
+from models.request_types import RequestType
 
 def test_every_request_type_has_registered_command_type():
     for request_type in RequestType:

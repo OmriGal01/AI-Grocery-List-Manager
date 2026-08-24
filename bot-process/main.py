@@ -6,9 +6,9 @@ from fastapi import FastAPI, Request, HTTPException
 import telegram
 from db import get_or_create_list_id
 from message_sources import MessageSource, telegram_source
-from request_types import RequestType
-from language_yaml_parser import FLAT_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE, WORD_TO_LANGUAGE
-from parsed_message import ParsedMessage
+from models.request_types import RequestType
+from language.language_yaml_parser import FLAT_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE, WORD_TO_LANGUAGE
+from models.parsed_message import ParsedMessage
 from commands import COMMAND_REGISTRY, Command
 
 @asynccontextmanager

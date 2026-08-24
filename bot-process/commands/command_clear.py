@@ -1,5 +1,5 @@
 from typing import override
-from request_types import RequestType
+from models.request_types import RequestType
 import asyncpg
 import db
 from .command import Command

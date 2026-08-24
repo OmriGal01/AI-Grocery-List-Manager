@@ -1,4 +1,5 @@
-from request_types import RequestType
+from models.request_types import RequestType
+from models.item import Item
 
 class ParsedMessage:
     def __init__(
@@ -14,15 +15,16 @@ class ParsedMessage:
         self.command_candidate = self.first_line_words[0] if self.first_line_words else None
         self._has_valid_command_or_prefix = (self.command_candidate in word_to_request_type_map.keys()
                                              or any(self.text.startswith(prefix) for prefix in prefix_to_request_type_map.keys()))
-        self.first_line_item = " ".join(self.first_line_words[1:])
+        self.first_line_item_name = " ".join(self.first_line_words[1:])
         self.request_type = self._parse_request_type(word_to_request_type_map, prefix_to_request_type_map)
         self.language = word_to_langauge_map.get(self.command_candidate, "unknown")
 
-    def get_item_list(self) -> list[str]:
+    def get_item_list(self) -> list[Item]:
+        # TODO: Get item categories once implemented
         if self._has_valid_command_or_prefix:
-            return (([self.first_line_item] if self.first_line_item else [])
-                            + [line.strip() for line in self.lines[1:] if line.strip()])
-        return [line.strip() for line in self.lines if line.strip()]
+            return (([Item(self.first_line_item_name)] if self.first_line_item_name else [])
+                            + [Item(line.strip()) for line in self.lines[1:] if line.strip()])
+        return [Item(line.strip()) for line in self.lines if line.strip()]
 
     def get_prefixless_message(self):
         if not self.text:

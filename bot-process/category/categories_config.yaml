@@ -1,0 +1,611 @@
+English:
+  # Produce
+  apple: produce
+  banana: produce
+  orange: produce
+  grape: produce
+  strawberry: produce
+  blueberry: produce
+  raspberry: produce
+  blackberry: produce
+  watermelon: produce
+  cantaloupe: produce
+  honeydew: produce
+  pineapple: produce
+  mango: produce
+  kiwi: produce
+  pear: produce
+  peach: produce
+  plum: produce
+  nectarine: produce
+  cherry: produce
+  apricot: produce
+  lemon: produce
+  lime: produce
+  grapefruit: produce
+  pomegranate: produce
+  fig: produce
+  date: produce
+  avocado: produce
+  tomato: produce
+  cucumber: produce
+  lettuce: produce
+  spinach: produce
+  kale: produce
+  arugula: produce
+  cabbage: produce
+  broccoli: produce
+  cauliflower: produce
+  carrot: produce
+  celery: produce
+  potato: produce
+  sweet potato: produce
+  onion: produce
+  garlic: produce
+  ginger: produce
+  bell pepper: produce
+  chili pepper: produce
+  jalapeno: produce
+  zucchini: produce
+  eggplant: produce
+  mushroom: produce
+  corn: produce
+  green beans: produce
+  peas: produce
+  asparagus: produce
+  beet: produce
+  radish: produce
+  turnip: produce
+  leek: produce
+  scallion: produce
+  shallot: produce
+  artichoke: produce
+  brussels sprouts: produce
+  pumpkin: produce
+  squash: produce
+  okra: produce
+
+  # Dairy & Eggs
+  milk: dairy
+  almond milk: dairy
+  soy milk: dairy
+  oat milk: dairy
+  cream: dairy
+  heavy cream: dairy
+  sour cream: dairy
+  half and half: dairy
+  butter: dairy
+  margarine: dairy
+  cheese: dairy
+  cheddar cheese: dairy
+  mozzarella cheese: dairy
+  parmesan cheese: dairy
+  feta cheese: dairy
+  cream cheese: dairy
+  cottage cheese: dairy
+  ricotta cheese: dairy
+  swiss cheese: dairy
+  gouda cheese: dairy
+  brie: dairy
+  yogurt: dairy
+  greek yogurt: dairy
+  kefir: dairy
+  eggs: dairy
+  egg whites: dairy
+  whipped cream: dairy
+  buttermilk: dairy
+  custard: dairy
+
+  # Meat & Poultry
+  chicken: meat
+  chicken breast: meat
+  chicken thigh: meat
+  chicken wings: meat
+  ground chicken: meat
+  turkey: meat
+  ground turkey: meat
+  beef: meat
+  ground beef: meat
+  steak: meat
+  ribeye: meat
+  sirloin: meat
+  brisket: meat
+  pork: meat
+  pork chop: meat
+  bacon: meat
+  ham: meat
+  sausage: meat
+  hot dog: meat
+  salami: meat
+  pepperoni: meat
+  lamb: meat
+  veal: meat
+  duck: meat
+  chicken liver: meat
+  meatballs: meat
+  deli meat: meat
+  prosciutto: meat
+
+  # Seafood
+  salmon: seafood
+  tuna: seafood
+  shrimp: seafood
+  crab: seafood
+  lobster: seafood
+  cod: seafood
+  tilapia: seafood
+  sardines: seafood
+  anchovies: seafood
+  mussels: seafood
+  clams: seafood
+  oysters: seafood
+  squid: seafood
+  scallops: seafood
+  catfish: seafood
+  halibut: seafood
+  mackerel: seafood
+  herring: seafood
+
+  # Bakery
+  bread: bakery
+  white bread: bakery
+  whole wheat bread: bakery
+  sourdough bread: bakery
+  baguette: bakery
+  bagel: bakery
+  croissant: bakery
+  muffin: bakery
+  roll: bakery
+  bun: bakery
+  pita: bakery
+  tortilla: bakery
+  naan: bakery
+  cake: bakery
+  cupcake: bakery
+  cookie: bakery
+  donut: bakery
+  pastry: bakery
+  pie: bakery
+  brownie: bakery
+  pretzel: bakery
+
+  # Pantry
+  rice: pantry
+  pasta: pantry
+  spaghetti: pantry
+  noodles: pantry
+  flour: pantry
+  sugar: pantry
+  brown sugar: pantry
+  salt: pantry
+  pepper: pantry
+  olive oil: pantry
+  vegetable oil: pantry
+  canola oil: pantry
+  vinegar: pantry
+  soy sauce: pantry
+  ketchup: pantry
+  mustard: pantry
+  mayonnaise: pantry
+  hot sauce: pantry
+  bbq sauce: pantry
+  honey: pantry
+  maple syrup: pantry
+  jam: pantry
+  peanut butter: pantry
+  nutella: pantry
+  cereal: pantry
+  oats: pantry
+  granola: pantry
+  canned beans: pantry
+  black beans: pantry
+  chickpeas: pantry
+  lentils: pantry
+  canned tomatoes: pantry
+  tomato sauce: pantry
+  tomato paste: pantry
+  canned corn: pantry
+  canned tuna: pantry
+  chicken broth: pantry
+  vegetable broth: pantry
+  beef broth: pantry
+  quinoa: pantry
+  couscous: pantry
+  breadcrumbs: pantry
+  baking powder: pantry
+  baking soda: pantry
+  vanilla extract: pantry
+  cinnamon: pantry
+  paprika: pantry
+  cumin: pantry
+  oregano: pantry
+  basil: pantry
+  thyme: pantry
+  rosemary: pantry
+  garlic powder: pantry
+  onion powder: pantry
+  chili powder: pantry
+  curry powder: pantry
+  bay leaves: pantry
+  almonds: pantry
+  walnuts: pantry
+  cashews: pantry
+  peanuts: pantry
+  pistachios: pantry
+  raisins: pantry
+  dried apricots: pantry
+  coconut milk: pantry
+  coconut flakes: pantry
+  chocolate chips: pantry
+
+  # Frozen
+  frozen pizza: frozen
+  frozen vegetables: frozen
+  frozen fruit: frozen
+  ice cream: frozen
+  frozen fries: frozen
+  frozen chicken nuggets: frozen
+  frozen shrimp: frozen
+  frozen waffles: frozen
+  frozen dumplings: frozen
+  popsicle: frozen
+  frozen berries: frozen
+  frozen peas: frozen
+  sorbet: frozen
+  frozen burritos: frozen
+
+  # Beverages
+  water: beverages
+  sparkling water: beverages
+  soda: beverages
+  cola: beverages
+  juice: beverages
+  orange juice: beverages
+  apple juice: beverages
+  coffee: beverages
+  tea: beverages
+  green tea: beverages
+  energy drink: beverages
+  beer: beverages
+  wine: beverages
+  lemonade: beverages
+  iced tea: beverages
+  hot chocolate: beverages
+  sports drink: beverages
+  kombucha: beverages
+
+  # Snacks
+  chips: snacks
+  potato chips: snacks
+  tortilla chips: snacks
+  popcorn: snacks
+  pretzels: snacks
+  crackers: snacks
+  granola bar: snacks
+  candy: snacks
+  chocolate bar: snacks
+  gummy bears: snacks
+  trail mix: snacks
+  rice cakes: snacks
+  beef jerky: snacks
+  salsa: snacks
+  hummus: snacks
+  guacamole: snacks
+  dip: snacks
+
+  # Household
+  paper towels: household
+  toilet paper: household
+  napkins: household
+  dish soap: household
+  laundry detergent: household
+  fabric softener: household
+  dishwasher tablets: household
+  trash bags: household
+  aluminum foil: household
+  plastic wrap: household
+  ziploc bags: household
+  sponges: household
+  all purpose cleaner: household
+  glass cleaner: household
+  bleach: household
+  air freshener: household
+  light bulbs: household
+  batteries: household
+  matches: household
+  candles: household
+
+  # Personal Care
+  toothpaste: personal care
+  toothbrush: personal care
+  mouthwash: personal care
+  dental floss: personal care
+  shampoo: personal care
+  conditioner: personal care
+  body wash: personal care
+  soap: personal care
+  deodorant: personal care
+  razor: personal care
+  shaving cream: personal care
+  lotion: personal care
+  sunscreen: personal care
+  tissues: personal care
+  cotton swabs: personal care
+  band aids: personal care
+  hand sanitizer: personal care
+  feminine pads: personal care
+  diapers: personal care
+  baby wipes: personal care
+
+Hebrew:
+  # פירות וירקות
+  תפוח: פירות וירקות
+  בננה: פירות וירקות
+  תפוז: פירות וירקות
+  ענבים: פירות וירקות
+  תות: פירות וירקות
+  אוכמניות: פירות וירקות
+  פטל: פירות וירקות
+  אבטיח: פירות וירקות
+  מלון: פירות וירקות
+  אננס: פירות וירקות
+  מנגו: פירות וירקות
+  קיווי: פירות וירקות
+  אגס: פירות וירקות
+  אפרסק: פירות וירקות
+  שזיף: פירות וירקות
+  נקטרינה: פירות וירקות
+  דובדבן: פירות וירקות
+  משמש: פירות וירקות
+  לימון: פירות וירקות
+  ליים: פירות וירקות
+  אשכולית: פירות וירקות
+  רימון: פירות וירקות
+  תאנה: פירות וירקות
+  תמר: פירות וירקות
+  אבוקדו: פירות וירקות
+  עגבנייה: פירות וירקות
+  מלפפון: פירות וירקות
+  חסה: פירות וירקות
+  תרד: פירות וירקות
+  כרוב: פירות וירקות
+  ברוקולי: פירות וירקות
+  כרובית: פירות וירקות
+  גזר: פירות וירקות
+  סלרי: פירות וירקות
+  תפוח אדמה: פירות וירקות
+  בטטה: פירות וירקות
+  בצל: פירות וירקות
+  שום: פירות וירקות
+  זנגביל: פירות וירקות
+  פלפל: פירות וירקות
+  פלפל חריף: פירות וירקות
+  קישוא: פירות וירקות
+  חציל: פירות וירקות
+  פטריות: פירות וירקות
+  תירס: פירות וירקות
+  שעועית ירוקה: פירות וירקות
+  אפונה: פירות וירקות
+  אספרגוס: פירות וירקות
+  סלק: פירות וירקות
+  צנון: פירות וירקות
+  כרישה: פירות וירקות
+  בצל ירוק: פירות וירקות
+  ארטישוק: פירות וירקות
+  כרוב ניצנים: פירות וירקות
+  דלעת: פירות וירקות
+
+  # מוצרי חלב וביצים
+  חלב: מוצרי חלב וביצים
+  חלב שקדים: מוצרי חלב וביצים
+  חלב סויה: מוצרי חלב וביצים
+  חלב שיבולת שועל: מוצרי חלב וביצים
+  שמנת: מוצרי חלב וביצים
+  שמנת חמוצה: מוצרי חלב וביצים
+  חמאה: מוצרי חלב וביצים
+  מרגרינה: מוצרי חלב וביצים
+  גבינה צהובה: מוצרי חלב וביצים
+  גבינת מוצרלה: מוצרי חלב וביצים
+  גבינת פרמזן: מוצרי חלב וביצים
+  גבינת פטה: מוצרי חלב וביצים
+  גבינת שמנת: מוצרי חלב וביצים
+  "גבינת קוטג'": מוצרי חלב וביצים
+  יוגורט: מוצרי חלב וביצים
+  יוגורט יווני: מוצרי חלב וביצים
+  ביצים: מוצרי חלב וביצים
+  קצפת: מוצרי חלב וביצים
+  חלבון ביצה: מוצרי חלב וביצים
+
+  # בשר ועוף
+  עוף: בשר ועוף
+  חזה עוף: בשר ועוף
+  שוק עוף: בשר ועוף
+  כנפי עוף: בשר ועוף
+  עוף טחון: בשר ועוף
+  הודו: בשר ועוף
+  הודו טחון: בשר ועוף
+  בקר: בשר ועוף
+  בקר טחון: בשר ועוף
+  סטייק: בשר ועוף
+  אנטריקוט: בשר ועוף
+  חזה בקר: בשר ועוף
+  חזיר: בשר ועוף
+  נקניק: בשר ועוף
+  נקניקיה: בשר ועוף
+  סלמי: בשר ועוף
+  כבד עוף: בשר ועוף
+  קציצות: בשר ועוף
+  בשר קר: בשר ועוף
+
+  # דגים ופירות ים
+  סלמון: דגים ופירות ים
+  טונה: דגים ופירות ים
+  שרימפס: דגים ופירות ים
+  סרטן: דגים ופירות ים
+  לובסטר: דגים ופירות ים
+  בקלה: דגים ופירות ים
+  טילפיה: דגים ופירות ים
+  סרדינים: דגים ופירות ים
+  אנשובי: דגים ופירות ים
+  צדפות: דגים ופירות ים
+  דיונון: דגים ופירות ים
+  סקלופ: דגים ופירות ים
+
+  # מאפים
+  לחם: מאפים
+  לחם לבן: מאפים
+  לחם מלא: מאפים
+  באגט: מאפים
+  בייגל: מאפים
+  קרואסון: מאפים
+  מאפין: מאפים
+  לחמנייה: מאפים
+  פיתה: מאפים
+  טורטייה: מאפים
+  עוגה: מאפים
+  קאפקייק: מאפים
+  עוגייה: מאפים
+  סופגנייה: מאפים
+  בורקס: מאפים
+  פשטידה: מאפים
+  בראוני: מאפים
+  בייגלה: מאפים
+
+  # מזווה
+  אורז: מזווה
+  פסטה: מזווה
+  ספגטי: מזווה
+  אטריות: מזווה
+  קמח: מזווה
+  סוכר: מזווה
+  מלח: מזווה
+  פלפל שחור: מזווה
+  שמן זית: מזווה
+  שמן קנולה: מזווה
+  חומץ: מזווה
+  רוטב סויה: מזווה
+  קטשופ: מזווה
+  חרדל: מזווה
+  מיונז: מזווה
+  דבש: מזווה
+  ריבה: מזווה
+  חמאת בוטנים: מזווה
+  דגני בוקר: מזווה
+  קוואקר: מזווה
+  שעועית משומרת: מזווה
+  חומוס יבש: מזווה
+  עדשים: מזווה
+  עגבניות משומרות: מזווה
+  רסק עגבניות: מזווה
+  תרכיז עגבניות: מזווה
+  תירס משומר: מזווה
+  טונה משומרת: מזווה
+  מרק עוף: מזווה
+  מרק ירקות: מזווה
+  קינואה: מזווה
+  קוסקוס: מזווה
+  פירורי לחם: מזווה
+  אבקת אפייה: מזווה
+  סודה לשתייה: מזווה
+  תמצית וניל: מזווה
+  קינמון: מזווה
+  פפריקה: מזווה
+  כמון: מזווה
+  אורגנו: מזווה
+  בזיליקום: מזווה
+  אגוזי מלך: מזווה
+  שקדים: מזווה
+  קשיו: מזווה
+  בוטנים: מזווה
+  פיסטוקים: מזווה
+  צימוקים: מזווה
+  משמשים מיובשים: מזווה
+  חלב קוקוס: מזווה
+  שוקולד צ'יפס: מזווה
+
+  # קפואים
+  פיצה קפואה: קפואים
+  ירקות קפואים: קפואים
+  פירות קפואים: קפואים
+  גלידה: קפואים
+  צ'יפס קפוא: קפואים
+  נגטס עוף קפואים: קפואים
+  שרימפס קפוא: קפואים
+  וופלים קפואים: קפואים
+  קרטיבים: קפואים
+  אפונה קפואה: קפואים
+  פירות יער קפואים: קפואים
+
+  # משקאות
+  מים: משקאות
+  מים מוגזים: משקאות
+  קולה: משקאות
+  מיץ: משקאות
+  מיץ תפוזים: משקאות
+  מיץ תפוחים: משקאות
+  קפה: משקאות
+  תה: משקאות
+  תה ירוק: משקאות
+  משקה אנרגיה: משקאות
+  בירה: משקאות
+  יין: משקאות
+  לימונדה: משקאות
+  קקאו חם: משקאות
+
+  # חטיפים
+  צ'יפס: חטיפים
+  במבה: חטיפים
+  ביסלי: חטיפים
+  פופקורן: חטיפים
+  קרקרים: חטיפים
+  חטיף גרנולה: חטיפים
+  שוקולד: חטיפים
+  סוכריות: חטיפים
+  תערובת אגוזים: חטיפים
+  סלסה: חטיפים
+  חומוס: חטיפים
+  גואקמולי: חטיפים
+
+  # מוצרי בית
+  מגבות נייר: מוצרי בית
+  נייר טואלט: מוצרי בית
+  מגבונים: מוצרי בית
+  סבון כלים: מוצרי בית
+  אבקת כביסה: מוצרי בית
+  מרכך כביסה: מוצרי בית
+  טבליות למדיח כלים: מוצרי בית
+  שקיות אשפה: מוצרי בית
+  נייר כסף: מוצרי בית
+  ניילון נצמד: מוצרי בית
+  שקיות אחסון: מוצרי בית
+  ספוגים: מוצרי בית
+  חומר ניקוי כללי: מוצרי בית
+  מגבוני חלונות: מוצרי בית
+  אקונומיקה: מוצרי בית
+  מבשם אוויר: מוצרי בית
+  נורות: מוצרי בית
+  סוללות: מוצרי בית
+  גפרורים: מוצרי בית
+  נרות: מוצרי בית
+
+  # טיפוח אישי
+  משחת שיניים: טיפוח אישי
+  מברשת שיניים: טיפוח אישי
+  מי פה: טיפוח אישי
+  חוט דנטלי: טיפוח אישי
+  שמפו: טיפוח אישי
+  מרכך שיער: טיפוח אישי
+  סבון גוף: טיפוח אישי
+  סבון: טיפוח אישי
+  דאודורנט: טיפוח אישי
+  סכין גילוח: טיפוח אישי
+  קרם גילוח: טיפוח אישי
+  קרם גוף: טיפוח אישי
+  קרם הגנה: טיפוח אישי
+  טישו: טיפוח אישי
+  מקלוני צמר גפן: טיפוח אישי
+  פלסטרים: טיפוח אישי
+  ג'ל אנטיבקטריאלי: טיפוח אישי
+  טמפונים: טיפוח אישי
+  חיטולים: טיפוח אישי
+  מגבוני תינוקות: טיפוח אישי

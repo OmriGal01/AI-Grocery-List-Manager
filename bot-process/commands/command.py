@@ -1,7 +1,7 @@
 import asyncpg
 from abc import ABC, abstractmethod
-from parsed_message import ParsedMessage
-from request_types import RequestType
+from models.parsed_message import ParsedMessage
+from models.request_types import RequestType
 
 
 class Command(ABC):

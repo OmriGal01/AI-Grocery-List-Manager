@@ -1,6 +1,6 @@
 from typing import override
 
-from request_types import RequestType
+from models.request_types import RequestType
 from .command import Command
 import db
 import asyncpg
@@ -21,5 +21,5 @@ class CommandList(Command):
             return Command.SOMETHING_WENT_WRONG
         if not result:
             return f"{self.EMPTY_EMOJI} The list is empty"
-        lines = [f"{self.LIST_EMOJI} Grocery List:"] + [f"● {item_name.capitalize()}" for item_name in result]
+        lines = [f"{self.LIST_EMOJI} Grocery List:"] + [f"● {item.name.capitalize()}" for item in result]
         return '\n'.join(lines)

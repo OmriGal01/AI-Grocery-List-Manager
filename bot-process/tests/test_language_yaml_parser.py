@@ -1,7 +1,7 @@
 import pytest
-from parsed_message import ParsedMessage
-from language_yaml_parser import FLAT_WORD_TO_REQUEST_TYPE, LANG_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE, WORD_TO_LANGUAGE
-from request_types import RequestType
+from models.parsed_message import ParsedMessage
+from language.language_yaml_parser import FLAT_WORD_TO_REQUEST_TYPE, LANG_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE, WORD_TO_LANGUAGE
+from models.request_types import RequestType
 
 def test_yaml_valid_request_types():
     for request_type in FLAT_WORD_TO_REQUEST_TYPE.values():

@@ -1,7 +1,7 @@
 from typing import override
 from .command import Command
-from request_types import RequestType
-from language_yaml_parser import REQUEST_TYPE_TO_DESCRIPTION, REQUEST_TYPE_TO_WORDS, REQUEST_TYPE_TO_PREFIXES
+from models.request_types import RequestType
+from language.language_yaml_parser import REQUEST_TYPE_TO_DESCRIPTION, REQUEST_TYPE_TO_WORDS, REQUEST_TYPE_TO_PREFIXES
 import asyncpg
 
 class CommandHelp(Command):

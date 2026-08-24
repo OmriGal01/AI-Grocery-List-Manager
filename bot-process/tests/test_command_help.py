@@ -1,9 +1,8 @@
 import pytest
-from commands import Command
 from commands.command_help import CommandHelp
-from parsed_message import ParsedMessage
-from language_yaml_parser import REQUEST_TYPE_TO_DESCRIPTION, REQUEST_TYPE_TO_WORDS
-from request_types import RequestType
+from models.parsed_message import ParsedMessage
+from language.language_yaml_parser import REQUEST_TYPE_TO_DESCRIPTION, REQUEST_TYPE_TO_WORDS
+from models.request_types import RequestType
 
 
 @pytest.mark.parametrize("language", list(REQUEST_TYPE_TO_DESCRIPTION.keys()))

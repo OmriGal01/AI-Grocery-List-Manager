@@ -1,7 +1,7 @@
 import asyncpg
 from typing import override, cast
 
-from request_types import RequestType
+from models.request_types import RequestType
 from .command import Command
 import db
 
