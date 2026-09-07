@@ -48,12 +48,21 @@ class LanguageParser:
             language_map[language] = specific_language_request_to_description_map
         return language_map
 
-    def get_word_to_language_map(self):
+    def get_word_to_language_map(self) -> dict[str, str]:
         word_to_language_map = {}
         for language, language_data in self.language_config.items():
             for word in language_data.get("words", {}).keys():
                 word_to_language_map[word] = language
         return word_to_language_map
+
+    def get_language_request_type_to_delimiter_map(self) -> dict[RequestType, str]:
+        language_request_type_to_delimiter_map = {}
+        for language, language_data in self.language_config.items():
+            specific_language_request_to_delimiter_map = {}
+            for type_name, delimiter in language_data.get("delimiters", {}).items():
+                specific_language_request_to_delimiter_map[RequestType[type_name]] = delimiter
+            language_request_type_to_delimiter_map[language] = specific_language_request_to_delimiter_map
+        return language_request_type_to_delimiter_map
 
     @staticmethod
     def _get_flipped_dict(dct: dict) -> dict:
@@ -69,3 +78,4 @@ FLAT_WORD_TO_REQUEST_TYPE, FLAT_PREFIX_TO_REQUEST_TYPE = language_parser.get_fla
 REQUEST_TYPE_TO_DESCRIPTION = language_parser.get_language_specific_descriptions()
 REQUEST_TYPE_TO_WORDS, REQUEST_TYPE_TO_PREFIXES = language_parser.get_language_specific_request_type_to_words_prefixes_maps()
 WORD_TO_LANGUAGE = language_parser.get_word_to_language_map()
+LANGUAGE_REQUEST_TYPE_TO_DELIMITER = language_parser.get_language_request_type_to_delimiter_map()

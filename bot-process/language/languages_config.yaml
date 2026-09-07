@@ -4,6 +4,7 @@ English:
     remove: REMOVE
     clear: CLEAR
     list: GET_LIST
+    categorize: CATEGORIZE
     help: HELP
     "?": HELP
     "/start": START
@@ -14,11 +15,15 @@ English:
     "$": SEND_TO_LLM
     "#": SEND_TO_LLM
 
+  delimiters:
+    CATEGORIZE: "as"
+
   descriptions:
     ADD: "<item(s)> - Add item(s) to your list, separated by new lines"
     REMOVE: "<item(s)> - Remove item(s) from your list, separated by new lines"
     CLEAR: "- Clears your list"
     GET_LIST: "- Show your current list"
+    CATEGORIZE: "<item> as <category> - Categorize an existing item to a given category"
     HELP: "- Show this message"
     SEND_TO_LLM: "<request> - Ask me anything about your list in plain language. For example: Ask me to add ingredients for burgers"
 
@@ -30,6 +35,7 @@ Hebrew:
     רוקן: CLEAR
     נקה: CLEAR
     רשימה: GET_LIST
+    סווג: CATEGORIZE
     עזרה: HELP
     התחל: START
 
@@ -38,10 +44,14 @@ Hebrew:
     "$": SEND_TO_LLM
     "#": SEND_TO_LLM
 
+  delimiters:
+    CATEGORIZE: "בתור"
+
   descriptions:
     ADD: "<פריט(ים)> - הוסף פריט(ים) לרשימה, מופרדים בשורה חדשה"
     REMOVE: "<פריט(ים)> - הסר פריט(ים) מהרשימה, מופרדים בשורה חדשה"
     CLEAR: "- רוקן את הרשימה"
     GET_LIST: "- הצג את הרשימה הנוכחית"
+    CATEGORIZE: "<פריט> בתור <קטגוריה> - סווג פריט לקטגוריה"
     HELP: "- הצג הודעה זו"
     SEND_TO_LLM: "<בקשה> - בקש ממני כל דבר הקשור לרשימה בשפה פשוטה. למשל: 'תוסיף מרכיבים להמבורגר'"
