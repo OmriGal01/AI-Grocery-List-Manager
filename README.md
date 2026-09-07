@@ -34,6 +34,8 @@ flowchart LR
 - Per-user lists, isolated by Telegram chat ID
 - `/start` and `/help` responses that adapt to the language the user typed in
 - Automatic item categorization (produce, dairy, household, etc.) via fuzzy matching against a curated per-language YAML lookup — no LLM call needed for the common case
+- A `categorize` command to manually (re)assign an item's category when the automatic match misses
+- `/list` groups items under a header per category (sorted in a sensible shopping order), with a per-item emoji
 
 ## Tech stack
 
@@ -51,7 +53,7 @@ flowchart LR
 
 This project is primarily a learning exercise in applying OOP principles and common design patterns to a real, deployed service, so a few decisions are worth calling out:
 
-- **`Command` class hierarchy** (`commands/`) — every request type (`ADD`, `REMOVE`, `CLEAR`, `HELP`, `START`, `SEND_TO_LLM`, …) is its own `Command` subclass implementing `handle()` and `format_reply()`. New command types are auto-discovered at import time and registered by their `REQUEST_TYPE`; `Command.__init_subclass__` enforces at class-definition time that every subclass declares a valid, unique request type, so a broken command fails fast instead of silently misrouting messages.
+- **`Command` class hierarchy** (`commands/`) — every request type (`ADD`, `REMOVE`, `CLEAR`, `CATEGORIZE`, `HELP`, `START`, `SEND_TO_LLM`, …) is its own `Command` subclass implementing `handle()` and `format_reply()`. New command types are auto-discovered at import time and registered by their `REQUEST_TYPE`; `Command.__init_subclass__` enforces at class-definition time that every subclass declares a valid, unique request type, so a broken command fails fast instead of silently misrouting messages.
 - **`MessageSource` strategy pattern** (`message_sources/`) — webhook signature verification and message extraction are abstracted behind a `MessageSource` interface, decoupling the shared dispatch logic (`process_message` in `main.py`) from Telegram specifically. Adding another platform (or a plain web frontend) later means implementing one new `MessageSource`, not touching the dispatch logic.
 - **Data-driven, YAML-based language support** (`language/`) — command words, prefixes, and descriptions per language live entirely in config, not in code. `/help` and `/start` responses read from the same parsed maps, so they can't drift out of sync with what's actually recognized.
 - **Least-privilege IAM** — the Cloud Run service runs under a dedicated service account scoped to exactly what it needs (`cloudsql.client`, `secretmanager.secretAccessor` on specific secrets), rather than the default broad Compute Engine service account.
@@ -65,6 +67,7 @@ bot-process/
 ├── db.py                       # Postgres queries (asyncpg)
 ├── mcp_server.py               # MCP server exposing list operations as tools
 ├── telegram.py                 # Outbound Telegram API calls
+├── parsing_utils.py            # Shared YAML-loading/string-normalization helpers
 ├── models/                     # Plain data types: Item, ParsedMessage, RequestType
 ├── language/                   # Language config + parser (command words/prefixes/descriptions)
 ├── category/                   # Category config + fuzzy-matching item categorizer
@@ -105,6 +108,5 @@ Current coverage: command dispatch/registry integrity, language-aware message cl
 - Additional languages (adding one is just a YAML edit, no code changes)
 - A web frontend, enabled by the existing `MessageSource` abstraction
 - Automated integration tests against a real Postgres instance
-- A command to manually correct an item's category when the automatic match misses
-- Showing categories when displaying the list (currently stored but not surfaced in `/list`)
-- Localizing the remaining commands' replies (currently only `/help` and `/start` are language-aware)
+- Automated test coverage for the categorization feature (fuzzy matching, YAML parsers, `/list` grouping) — currently only manually verified
+- Localizing the remaining commands' replies (currently only `/help`, `/start`, and category labels are language-aware)
