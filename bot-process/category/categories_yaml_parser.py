@@ -1,5 +1,5 @@
 from pathlib import Path
-from category.yaml_parsing_utils import get_raw_yaml_dict, normalize_name
+from parsing_utils import get_raw_yaml_dict, normalize_name
 
 CATEGORIES_CONFIG_PATH = Path(__file__).resolve().parent / "categories_config.yaml"
 unnormalized_lang_item_to_category = get_raw_yaml_dict(CATEGORIES_CONFIG_PATH)

@@ -1,6 +1,6 @@
 from pathlib import Path
 from collections import defaultdict
-from category.yaml_parsing_utils import get_raw_yaml_dict, normalize_name
+from parsing_utils import get_raw_yaml_dict, normalize_name
 
 CATEGORIES_DISPLAY_CONFIG_PATH = Path(__file__).resolve().parent / "category_display_config.yaml"
 
