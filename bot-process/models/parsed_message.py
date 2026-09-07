@@ -1,5 +1,6 @@
 from models.request_types import RequestType
 from models.item import Item
+from category.categorizer import find_category
 
 class ParsedMessage:
     def __init__(
@@ -19,12 +20,19 @@ class ParsedMessage:
         self.request_type = self._parse_request_type(word_to_request_type_map, prefix_to_request_type_map)
         self.language = word_to_langauge_map.get(self.command_candidate, "unknown")
 
-    def get_item_list(self) -> list[Item]:
-        # TODO: Get item categories once implemented
+    def get_item_list(self, skip_categories=False) -> list[Item]:
         if self._has_valid_command_or_prefix:
-            return (([Item(self.first_line_item_name)] if self.first_line_item_name else [])
-                            + [Item(line.strip()) for line in self.lines[1:] if line.strip()])
-        return [Item(line.strip()) for line in self.lines if line.strip()]
+            item_names = (([self.first_line_item_name] if self.first_line_item_name else [])
+                        + [line.strip() for line in self.lines[1:] if line.strip()])
+        else:
+            item_names = [line.strip() for line in self.lines if line.strip()]
+
+        if skip_categories:
+            item_list = [Item(name) for name in item_names]
+        else:
+            item_list = [Item(name, find_category(name, self.language)) for name in item_names]
+
+        return item_list
 
     def get_prefixless_message(self):
         if not self.text:

@@ -6,3 +6,4 @@ httpx
 mcp
 google-genai
 PyYAML
+rapidfuzz

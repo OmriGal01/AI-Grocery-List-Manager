@@ -37,9 +37,8 @@ async def clear_list(pool: asyncpg.pool.Pool, list_id: int) -> int:
 async def categorize_item_by_name(pool: asyncpg.pool.Pool, list_id: int, item_name: str, category: str) -> bool:
     query = "UPDATE items SET category = $3 WHERE list_id = $1 AND item_name = $2 RETURNING item_name"
     async with pool.acquire() as connection:
-        num_rows_updated = await connection.fetchval(query, list_id, item_name, category)
-    return num_rows_updated >= 1
-
+        first_val_updated = await connection.fetchval(query, list_id, item_name, category)
+    return first_val_updated is not None
 
 async def get_items(pool: asyncpg.pool.Pool, list_id: int) -> list[Item]:
     async with pool.acquire() as connection:

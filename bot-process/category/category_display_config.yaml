@@ -1,0 +1,25 @@
+categories:
+  - names: ["produce", "פירות וירקות"]
+    emoji: "🥦"
+  - names: ["bakery", "מאפים"]
+    emoji: "🍞"
+  - names: ["meat", "בשר ועוף"]
+    emoji: "🍗"
+  - names: ["seafood", "דגים ופירות ים"]
+    emoji: "🐟"
+  - names: ["dairy and eggs", "מוצרי חלב וביצים"]
+    emoji: "🧀"
+  - names: ["frozen", "קפואים"]
+    emoji: "🧊"
+  - names: ["pantry", "מזווה"]
+    emoji: "🥫"
+  - names: ["snacks", "חטיפים"]
+    emoji: "🍪"
+  - names: ["beverages", "משקאות"]
+    emoji: "🥤"
+  - names: ["household", "מוצרי בית"]
+    emoji: "🧽"
+  - names: ["personal care", "טיפוח אישי"]
+    emoji: "🧴"
+
+unknown_emoji: "❓"

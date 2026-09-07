@@ -1,14 +1,14 @@
 from mcp.server.mcpserver import MCPServer
 from db import add_items, remove_items_by_name, get_items, save_pending_conversation
 from models.item import Item
+from category.categorizer import find_category
 
 def build_mcp_server(pool, list_id, chat_id, contents) -> MCPServer:
     server = MCPServer(name="grocery-list")
 
     @server.tool()
     async def add_items_to_list(item_names: list[str]) -> dict[str, bool]:
-        # TODO: Use item categorization once implemented
-        items = [Item(item_name, None) for item_name in item_names]
+        items = [Item(item_name, find_category(item_name)) for item_name in item_names]
         return await add_items(pool, list_id, items)
 
     @server.tool()

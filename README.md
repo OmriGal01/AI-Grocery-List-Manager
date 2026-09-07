@@ -33,6 +33,7 @@ flowchart LR
 - Multi-language support (English and Hebrew currently), driven entirely by a YAML config — no code changes needed to add new command words in a supported language
 - Per-user lists, isolated by Telegram chat ID
 - `/start` and `/help` responses that adapt to the language the user typed in
+- Automatic item categorization (produce, dairy, household, etc.) via fuzzy matching against a curated per-language YAML lookup — no LLM call needed for the common case
 
 ## Tech stack
 
@@ -52,24 +53,24 @@ This project is primarily a learning exercise in applying OOP principles and com
 
 - **`Command` class hierarchy** (`commands/`) — every request type (`ADD`, `REMOVE`, `CLEAR`, `HELP`, `START`, `SEND_TO_LLM`, …) is its own `Command` subclass implementing `handle()` and `format_reply()`. New command types are auto-discovered at import time and registered by their `REQUEST_TYPE`; `Command.__init_subclass__` enforces at class-definition time that every subclass declares a valid, unique request type, so a broken command fails fast instead of silently misrouting messages.
 - **`MessageSource` strategy pattern** (`message_sources/`) — webhook signature verification and message extraction are abstracted behind a `MessageSource` interface, decoupling the shared dispatch logic (`process_message` in `main.py`) from Telegram specifically. Adding another platform (or a plain web frontend) later means implementing one new `MessageSource`, not touching the dispatch logic.
-- **Data-driven, YAML-based language support** (`languages_config.yaml` + `language_yaml_parser.py`) — command words, prefixes, and descriptions per language live entirely in config, not in code. `/help` and `/start` responses read from the same parsed maps, so they can't drift out of sync with what's actually recognized.
+- **Data-driven, YAML-based language support** (`language/`) — command words, prefixes, and descriptions per language live entirely in config, not in code. `/help` and `/start` responses read from the same parsed maps, so they can't drift out of sync with what's actually recognized.
 - **Least-privilege IAM** — the Cloud Run service runs under a dedicated service account scoped to exactly what it needs (`cloudsql.client`, `secretmanager.secretAccessor` on specific secrets), rather than the default broad Compute Engine service account.
+- **Fuzzy-matched categorization instead of an LLM call** (`category/`) — deliberately avoids the latency and token cost of asking an LLM to categorize every added item. A curated per-language YAML maps known item names to categories; incoming item names are matched against it with `rapidfuzz`, tolerating typos and minor variations without needing an exact match.
 
 ## Project structure
 
 ```
 bot-process/
-├── main.py                  # FastAPI app, webhook route, message dispatch
-├── db.py                    # Postgres queries (asyncpg)
-├── mcp_server.py            # MCP server exposing list operations as tools
-├── telegram.py              # Outbound Telegram API calls
-├── parsed_message.py        # Classifies an incoming message (request type + language)
-├── language_yaml_parser.py  # Parses languages_config.yaml into lookup maps
-├── languages_config.yaml    # All supported languages' command words/prefixes/descriptions
-├── request_types.py         # RequestType enum
-├── commands/                # One Command subclass per request type
-├── message_sources/         # MessageSource strategy (currently: Telegram)
-└── tests/                   # pytest suite
+├── main.py                     # FastAPI app, webhook route, message dispatch
+├── db.py                       # Postgres queries (asyncpg)
+├── mcp_server.py               # MCP server exposing list operations as tools
+├── telegram.py                 # Outbound Telegram API calls
+├── models/                     # Plain data types: Item, ParsedMessage, RequestType
+├── language/                   # Language config + parser (command words/prefixes/descriptions)
+├── category/                   # Category config + fuzzy-matching item categorizer
+├── commands/                   # One Command subclass per request type
+├── message_sources/            # MessageSource strategy (currently: Telegram)
+└── tests/                      # pytest suite
 ```
 
 ## Running locally
@@ -104,5 +105,6 @@ Current coverage: command dispatch/registry integrity, language-aware message cl
 - Additional languages (adding one is just a YAML edit, no code changes)
 - A web frontend, enabled by the existing `MessageSource` abstraction
 - Automated integration tests against a real Postgres instance
-- Categorizing items in the list (e.g. produce, dairy, household)
+- A command to manually correct an item's category when the automatic match misses
+- Showing categories when displaying the list (currently stored but not surfaced in `/list`)
 - Localizing the remaining commands' replies (currently only `/help` and `/start` are language-aware)

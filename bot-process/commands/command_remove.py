@@ -28,6 +28,6 @@ class CommandRemove(Command):
 
     @override
     def extract_payload(self):
-        item_list = self.parsed_message.get_item_list()
+        item_list = self.parsed_message.get_item_list(skip_categories=True)
         item_name_list = [item.name for item in item_list]
         return item_name_list

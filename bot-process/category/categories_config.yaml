@@ -66,35 +66,35 @@ English:
   okra: produce
 
   # Dairy & Eggs
-  milk: dairy
-  almond milk: dairy
-  soy milk: dairy
-  oat milk: dairy
-  cream: dairy
-  heavy cream: dairy
-  sour cream: dairy
-  half and half: dairy
-  butter: dairy
-  margarine: dairy
-  cheese: dairy
-  cheddar cheese: dairy
-  mozzarella cheese: dairy
-  parmesan cheese: dairy
-  feta cheese: dairy
-  cream cheese: dairy
-  cottage cheese: dairy
-  ricotta cheese: dairy
-  swiss cheese: dairy
-  gouda cheese: dairy
-  brie: dairy
-  yogurt: dairy
-  greek yogurt: dairy
-  kefir: dairy
-  eggs: dairy
-  egg whites: dairy
-  whipped cream: dairy
-  buttermilk: dairy
-  custard: dairy
+  milk: dairy and eggs
+  almond milk: dairy and eggs
+  soy milk: dairy and eggs
+  oat milk: dairy and eggs
+  cream: dairy and eggs
+  heavy cream: dairy and eggs
+  sour cream: dairy and eggs
+  half and half: dairy and eggs
+  butter: dairy and eggs
+  margarine: dairy and eggs
+  cheese: dairy and eggs
+  cheddar cheese: dairy and eggs
+  mozzarella cheese: dairy and eggs
+  parmesan cheese: dairy and eggs
+  feta cheese: dairy and eggs
+  cream cheese: dairy and eggs
+  cottage cheese: dairy and eggs
+  ricotta cheese: dairy and eggs
+  swiss cheese: dairy and eggs
+  gouda cheese: dairy and eggs
+  brie: dairy and eggs
+  yogurt: dairy and eggs
+  greek yogurt: dairy and eggs
+  kefir: dairy and eggs
+  eggs: dairy and eggs
+  egg whites: dairy and eggs
+  whipped cream: dairy and eggs
+  buttermilk: dairy and eggs
+  custard: dairy and eggs
 
   # Meat & Poultry
   chicken: meat
